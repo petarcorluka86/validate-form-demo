@@ -11,7 +11,7 @@ $form-h1-title: 3em;
         display: grid;
         grid-template-columns: 25% 50% 25%;
         grid-template-rows: ($form-h1-title*2.5) auto;
-        background: rgba(150, 208, 255, 0.863);
+        background: rgba(172, 207, 236, 0.863);
         padding-bottom: $form-h1-title;
         border-radius: 10pt;
     
@@ -42,6 +42,18 @@ $form-h1-title: 3em;
                 }
                 input:focus {
                     outline: 0;
+                }
+
+                .form-error{
+                    margin-top: 5pt;
+                    padding: 0 5pt;
+                    background: rgba(252, 186, 186, 0.397);
+                    border: solid 1pt red;
+                    width: fit-content;
+                    border-color: red;
+                    border-radius: 5px;
+                    color: red;
+                    font-size: 12pt;
                 }
             }
 

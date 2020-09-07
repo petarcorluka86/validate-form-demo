@@ -17,7 +17,7 @@
       grid-template-columns: 25% 50% 25%;
   -ms-grid-rows: 7.5em auto;
       grid-template-rows: 7.5em auto;
-  background: rgba(150, 208, 255, 0.863);
+  background: rgba(172, 207, 236, 0.863);
   padding-bottom: 3em;
   border-radius: 10pt;
 }
@@ -55,6 +55,20 @@
 
 .app .form-container form label input:focus {
   outline: 0;
+}
+
+.app .form-container form label .form-error {
+  margin-top: 5pt;
+  padding: 0 5pt;
+  background: rgba(252, 186, 186, 0.397);
+  border: solid 1pt red;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-color: red;
+  border-radius: 5px;
+  color: red;
+  font-size: 12pt;
 }
 
 .app .form-container form button {
