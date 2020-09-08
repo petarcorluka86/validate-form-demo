@@ -39,24 +39,24 @@ function App() {
       <div className="form-container">
         <h1>DEMO FORM</h1>
         <form id="mainForm" autoComplete="off" onSubmit={handleSubmit}>
-          <label className={errors.fullName && "invalid-label"}>
+          <label className={errors.fullName ? "invalid-label" : null}>
             Full name:
-            <input className={errors.fullName && "invalid-input"} id="fullName" type="text" name="fullName" value={values.fullName} onChange={handleChange} />
+            <input className={errors.fullName ? "invalid-input" : null} id="fullName" type="text" name="fullName" value={values.fullName} onChange={handleChange} />
             {errors.fullName && <div className="form-error">{errors.fullName[0]}</div>}
           </label>
-          <label className={errors.email && "invalid-label"}>
+          <label className={errors.email ? "invalid-label" : null}>
             Email:
-            <input className={errors.email && "invalid-input"} id="email" type="text" name="email" value={values.email} onChange={handleChange} />
+            <input className={errors.email ? "invalid-input" : null} id="email" type="text" name="email" value={values.email} onChange={handleChange} />
             {errors.email && <div className="form-error">{errors.email[0]}</div>}
           </label>
-          <label className={errors.password && "invalid-label"}>
+          <label className={errors.password ? "invalid-label" : null}>
             Password:
-            <input className={errors.password && "invalid-input"} id="password" type="password" name="password" value={values.password} onChange={handleChange} />
+            <input className={errors.password ? "invalid-input" : null} id="password" type="password" name="password" value={values.password} onChange={handleChange} />
             {errors.password && <div className="form-error">{errors.password[0]}</div>}
           </label>
-          <label className={errors.confirmPassword && "invalid-label"}>
+          <label className={errors.confirmPassword ? "invalid-label" : null}>
             Confirm password:
-            <input className={errors.confirmPassword && "invalid-input"} id="confirmPassword" type="password" name="confirmPassword" value={values.confirmPassword}  onChange={handleChange} />
+            <input className={errors.confirmPassword ? "invalid-input" : null} id="confirmPassword" type="password" name="confirmPassword" value={values.confirmPassword}  onChange={handleChange} />
             {errors.confirmPassword && <div className="form-error">{errors.confirmPassword[0]}</div>}
           </label>
           <button  type="submit">Submit form</button>
