@@ -4,21 +4,24 @@ import validate from 'validate.js';
 
 function App() {
   const [errors,setErrors] = useState({});
-  const [values,setValues] = useState({});
+  const [values,setValues] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
 
 
   const handleChange = (event) => {
     event.preventDefault();
+    const name = event.target.name;
+    const value = event.target.value;
     setValues({
       ...values,
-      [event.target.name]: event.target.value
+      [name]: value
     });
-  }
-
-  const handleBlur = (event) => {
-    event.preventDefault();
-    const input = event.target.id
-    const error = validate(values,constraints)
+    const input = name
+    const error = validate({...values, [name]: value},constraints)
     if(error !== undefined) {
       const result = error[input];
       if(result) {
@@ -35,10 +38,7 @@ function App() {
       }
     }
     else {
-      setErrors({
-        ...errors,
-        [input]: false
-      });
+      setErrors({});
     }
   }
 
@@ -48,7 +48,7 @@ function App() {
     if(temp) setErrors(temp);
     else {
       alert("Sucess!");
-      setErrors({});
+      window.location.reload();
     }
   }
 
@@ -59,25 +59,25 @@ function App() {
         <form id="mainForm" autoComplete="off" onSubmit={handleSubmit}>
           <label>
             Full name:
-            <input id="fullName" type="text" name="fullName" vaule={values.fullName} onChange={handleChange} onBlur={handleBlur}/>
+            <input id="fullName" type="text" name="fullName" value={values.fullName} onChange={handleChange} />
             {errors.fullName && <div className="form-error">{errors.fullName[0]}</div>}
           </label>
           <label>
             Email:
-            <input id="email" type="text" name="email" onChange={handleChange} onBlur={handleBlur}/>
+            <input id="email" type="text" name="email" value={values.email} onChange={handleChange} />
             {errors.email && <div className="form-error">{errors.email[0]}</div>}
           </label>
           <label>
             Password:
-            <input id="password" type="password" name="password" onChange={handleChange} onBlur={handleBlur}/>
+            <input id="password" type="password" name="password" value={values.password} onChange={handleChange} />
             {errors.password && <div className="form-error">{errors.password[0]}</div>}
           </label>
           <label>
             Confirm password:
-            <input id="confirmPassword" type="password" name="confirmPassword" onChange={handleChange} onBlur={handleBlur}/>
+            <input id="confirmPassword" type="password" name="confirmPassword" value={values.confirmPassword}  onChange={handleChange} />
             {errors.confirmPassword && <div className="form-error">{errors.confirmPassword[0]}</div>}
           </label>
-          <button type="submit">Submit form</button>
+          <button  type="submit">Submit form</button>
         </form>
       </div>
     </div>
@@ -87,11 +87,13 @@ function App() {
 const constraints = {
   fullName: {
     presence: {
+      allowEmpty: false,
       message: "^This field is required!"
     }
   },
   email: {
     presence: {
+      allowEmpty: false,
       message: "^This field is required!"
     },
     email: {
@@ -100,6 +102,7 @@ const constraints = {
   },
   password: {
     presence: {
+      allowEmpty: false,
       message: "^This field is required!"
     },
     length: {
@@ -109,6 +112,7 @@ const constraints = {
   },
   confirmPassword: {
     presence: {
+      allowEmpty: false,
       message: "^This field is required!"
     },
     equality: {
