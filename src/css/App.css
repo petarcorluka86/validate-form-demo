@@ -1,8 +1,8 @@
 .app {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 25% 50% 25%;
-      grid-template-columns: 25% 50% 25%;
+  -ms-grid-columns: 30% 40% 30%;
+      grid-template-columns: 30% 40% 30%;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
 }
@@ -13,11 +13,11 @@
   margin: 50pt 0pt 50pt 0pt;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 25% 50% 25%;
-      grid-template-columns: 25% 50% 25%;
+  -ms-grid-columns: 10% 80% 10%;
+      grid-template-columns: 10% 80% 10%;
   -ms-grid-rows: 7.5em auto;
       grid-template-rows: 7.5em auto;
-  background: rgba(172, 207, 236, 0.863);
+  background: rgba(114, 214, 228, 0.475);
   padding-bottom: 3em;
   border-radius: 10pt;
 }
@@ -60,8 +60,7 @@
 .app .form-container form label .form-error {
   margin-top: 5pt;
   padding: 0 5pt;
-  background: rgba(252, 186, 186, 0.397);
-  border: solid 1pt red;
+  border: solid 0pt red;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -84,5 +83,14 @@
 
 .app .form-container form button:focus {
   outline: 0;
+}
+
+.invalid-input {
+  background: #ffc8c8;
+  border: 2pt solid red !important;
+}
+
+.invalid-label {
+  color: red;
 }
 /*# sourceMappingURL=App.css.map */

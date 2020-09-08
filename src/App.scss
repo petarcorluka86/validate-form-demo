@@ -2,16 +2,16 @@ $form-h1-title: 3em;
 
 .app {
     display: grid;
-    grid-template-columns: 25% 50% 25%;
+    grid-template-columns: 30% 40% 30%;
     grid-template-rows: auto;
 
     .form-container {
         grid-column: 2;
         margin: 50pt 0pt 50pt 0pt;
         display: grid;
-        grid-template-columns: 25% 50% 25%;
+        grid-template-columns: 10% 80% 10%;
         grid-template-rows: ($form-h1-title*2.5) auto;
-        background: rgba(172, 207, 236, 0.863);
+        background: rgba(114, 214, 228, 0.475);
         padding-bottom: $form-h1-title;
         border-radius: 10pt;
     
@@ -47,8 +47,7 @@ $form-h1-title: 3em;
                 .form-error{
                     margin-top: 5pt;
                     padding: 0 5pt;
-                    background: rgba(252, 186, 186, 0.397);
-                    border: solid 1pt red;
+                    border: solid 0pt red;
                     width: fit-content;
                     border-color: red;
                     border-radius: 5px;
@@ -74,3 +73,11 @@ $form-h1-title: 3em;
     }
 }
 
+.invalid-input{
+    background: rgba(255,200,200,1);
+    border: 2pt solid red !important;
+}
+
+.invalid-label{
+    color: red;
+}
