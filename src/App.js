@@ -11,41 +11,22 @@ function App() {
     confirmPassword: ""
   });
 
-
   const handleChange = (event) => {
     event.preventDefault();
     const name = event.target.name;
     const value = event.target.value;
-    setValues({
-      ...values,
-      [name]: value
-    });
-    const input = name
-    const error = validate({...values, [name]: value},constraints)
-    if(error !== undefined) {
-      const result = error[input];
-      if(result) {
-        setErrors({
-          ...errors,
-          [input]: result
-        });
-      }
-      else {
-        setErrors({
-          ...errors,
-          [input]: false
-        });
-      }
-    }
-    else {
-      setErrors({});
-    }
+    setValues({...values, [name]: value});
+    const result = validate({...values, [name]: value},constraints)
+    if(result !== undefined)
+      if(result[name]) setErrors({...errors, [name]: result[name]});
+      else setErrors({...errors,[name]: false});
+    else setErrors({});
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const temp = validate(values,constraints);
-    if(temp) setErrors(temp);
+    const result = validate(values,constraints);
+    if(result) setErrors(result);
     else {
       alert("Sucess!");
       window.location.reload();
