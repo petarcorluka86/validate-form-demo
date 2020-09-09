@@ -1,22 +1,15 @@
 import React, { useState } from 'react';
 import './css/App.css';
 import validate from 'validate.js';
+import {constraints, initForm} from './objects';
 
-function App() {
+export default function App() {
 
-  const [formData,setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-  });
   const [errors,setErrors] = useState({});
-  const [values,setValues] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-  });
+  const [formData,setFormData] = useState(initForm);
+  const [values,setValues] = useState(initForm);
+  const setData = () => localStorage.setItem('formData',JSON.stringify(values));
+  const getData = () => setFormData(JSON.parse(localStorage.getItem('formData')));
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -54,14 +47,6 @@ function App() {
       setData();
       window.location.reload();
     }
-  }
-
-  const setData = () => {
-    localStorage.setItem('formData',JSON.stringify(values));
-  }
-
-  const getData = () => {
-    setFormData(JSON.parse(localStorage.getItem('formData')));
   }
 
   return (
@@ -121,44 +106,3 @@ function App() {
     </div>
   );
 }
-
-const constraints = {
-  fullName: {
-    presence: {
-      allowEmpty: false,
-      message: "^This field is required!"
-    }
-  },
-  email: {
-    presence: {
-      allowEmpty: false,
-      message: "^This field is required!"
-    },
-    email: {
-      message: "^This is not a valid email!"
-    }
-  },
-  password: {
-    presence: {
-      allowEmpty: false,
-      message: "^This field is required!"
-    },
-    length: {
-      minimum: 6,
-      message: "^Password needs to be at least 6 characters!"
-    }
-  },
-  confirmPassword: {
-    presence: {
-      allowEmpty: false,
-      message: "^This field is required!"
-    },
-    equality: {
-      attribute: "password",
-      message: "^Password doesn't match."
-    }
-  }
-};
-
-
-export default App;
