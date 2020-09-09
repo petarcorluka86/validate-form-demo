@@ -6,7 +6,7 @@ $form-h1-title: 3em;
     grid-template-rows: auto;
     padding: 50pt;
 
-    .left{
+    .left {
         display: grid;
         grid-template-columns: 10% 80% 10%;
         grid-template-rows: auto;
@@ -43,11 +43,12 @@ $form-h1-title: 3em;
                         border-radius: 5pt;
                         border: 0pt;
                     }
+
                     input:focus {
                         outline: 0;
                     }
     
-                    .form-error{
+                    .form-error {
                         margin-top: 5pt;
                         padding: 0 5pt;
                         border: solid 0pt red;
@@ -69,16 +70,26 @@ $form-h1-title: 3em;
                     width: 90pt;
                     font-size: 1.2em;
                 }
+
                 button:focus {
                     outline: 0;
                 }
-            }
+
+                .invalid-input{
+                    background: rgba(255,200,200,1);
+                    border: 2pt solid red !important;
+                }
+                
+                .invalid-label{
+                    color: red;
+                }
+
             }
         }
+        
     }
     
-
-    .right{
+    .right {
         display: grid;
         grid-template-columns: 10% 80% 10%;
         grid-template-rows: auto;
@@ -100,6 +111,7 @@ $form-h1-title: 3em;
                 display: block;
                 font-size: 2em;
                 margin: 20pt 30pt 0 20pt;
+
                 span {
                     background: white;
                     display: block;
@@ -125,17 +137,10 @@ $form-h1-title: 3em;
                 width: 90pt;
                 font-size: 1.2em;
             }
+
             button:focus {
                 outline: 0;
             }
         }
-}
-
-.invalid-input{
-    background: rgba(255,200,200,1);
-    border: 2pt solid red !important;
-}
-
-.invalid-label{
-    color: red;
+    }
 }
