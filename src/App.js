@@ -4,6 +4,12 @@ import validate from 'validate.js';
 
 function App() {
 
+  const [formData,setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  });
   const [errors,setErrors] = useState({});
   const [values,setValues] = useState({
     fullName: "",
@@ -45,8 +51,17 @@ function App() {
     if(result) setErrors(result);
     else {
       alert("Sucess!");
+      setData();
       window.location.reload();
     }
+  }
+
+  const setData = () => {
+    localStorage.setItem('formData',JSON.stringify(values));
+  }
+
+  const getData = () => {
+    setFormData(JSON.parse(localStorage.getItem('formData')));
   }
 
   return (
@@ -76,6 +91,28 @@ function App() {
           </label>
           <button  type="submit">Submit form</button>
         </form>
+      </div>
+      <div className="localstorage-info-container">
+        <div className="info-table">
+          <h1>GET LAST SUBMIT</h1>
+          <label>
+            Full name:
+            <span>{formData.fullName}</span>
+          </label>
+          <label>
+            Email:
+            <span>{formData.email}</span>
+          </label>
+          <label>
+            Password:
+            <span>{formData.password}</span>
+          </label>
+          <label>
+            Confirm password:
+            <span>{formData.confirmPassword}</span>
+          </label>
+          <button onClick={()=>{getData()}}>Get data</button>
+        </div>
       </div>
     </div>
   );
